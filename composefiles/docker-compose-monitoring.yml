@@ -13,6 +13,10 @@ services:
     configs: 
       - source: prometheus
         target: /etc/prometheus/prometheus.yml
+      - source: alertrules.nodes
+        target: /etc/prometheus-rules/alertrules.nodes
+      - source: alertrules.task
+        target: /etc/prometheus-rules/alertrules.task
     command: 
       --config.file=/etc/prometheus/prometheus.yml 
       --storage.tsdb.path=/prometheus 
@@ -211,4 +215,8 @@ configs:
     file: configs/elastalert_supervisord.conf
   elastalertconfig:
     file: configs/elastalertconfig.yaml
+  alertrules.nodes:
+    file: alertfiles/alertrules.nodes
+  alertrules.task:
+    file: alertfiles/alertrules.task
   
